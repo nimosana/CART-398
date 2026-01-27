@@ -1,0 +1,11 @@
+setcps(130/60/4)
+
+samples({
+  cray: 'https://cdn.freesound.org/previews/822/822302_3905081-lq.mp3'
+})
+
+stack(
+note("20 20/2 20*2 ~ 20 ~ 20/2 20*2 20").sound("korgpoly800_bd:2").gain("0.3"),
+note("20 ~ 20*2 ~ ~ ~ 20/2 20*2 20").sound("lm8953_mt:1").gain("0.3"),
+note("20/2 20-/2 20*2 ~ 20 ~ ~ 20*3 20").sound("lm8953_sd:1").gain("0.3"),
+note("<35  35*3> <35 25> <25 25*2> <30*3 30> 35/2").sound("cray").gain("2")

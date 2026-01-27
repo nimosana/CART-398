@@ -1,0 +1,14 @@
+
+setcps(130/60/4)
+
+samples({
+  cray: 'https://cdn.freesound.org/previews/822/822302_3905081-lq.mp3'
+})
+
+$: stack(
+
+note("<22.5 22?0.4 23?0.4>").sound("cray").gain("0.8"))
+
+$: s("<space:5 [space:5 space:5]> space:6 space:7 <space:7 [space:7 space:7]>").sound("space")
+$: note("<5/2 ~ ~ ~>").sound("marktrees")
+$: note("<0.1?0.4 0.1?0.4 ~> <~ ~ 0.1*2>").sound("insect")

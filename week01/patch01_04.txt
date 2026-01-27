@@ -1,0 +1,12 @@
+setcps(120/60/4)
+
+// $: note("20 20 21 19 20 21 22 23").sound("wt_digital_crickets")
+//   .lpf("300")
+//   .gain("3")
+$: note("10 ~  ~ <9.3 10 11 9.3 12 11> ~ ~ 10?0.4")
+  .sound("anvil").gain(3)
+
+$: note("30 30 <31 [29 29]> ~").sound("didgeridoo:1")
+
+$: note("< 8*22 ~ ~ ~ ~ ~ > ~ ~ ~ ~ ~")
+  .sound("saxello_vib:3").gain(0.25)

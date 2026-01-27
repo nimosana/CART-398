@@ -1,0 +1,18 @@
+setcps(130/60/4)
+
+$:s (`
+~ sk1_bd sk1_bd/2 sk1_bd sk1_bd/2 sk1_bd*2 ~ sk1_bd,
+jazz jazz jazz*2 jazz jazz/2 jazz/2 ~ jazz,
+~ wt_digital_curses ~ wt_digital_curses/2 [wt_digital_echoes/2] wt_digital_curses ~ ~,
+wt_vgame:4/2 ~ ~ wt_vgame:6 ~ ~ wt_vgame:4 ~,
+gm_shakuhachi:1/2,
+ gm_ocarina:2/3 
+`).scope()
+
+$:s(`
+~ concertmatemg1_bd*2 ~ concertmatemg1_bd/2 concertmatemg1_bd/2 concertmatemg1_bd/2 concertmatemg1_bd/2 concertmatemg1_bd ,
+sh09_bd/2 ~ ~ ~ ~ ~ ~ ~ ,
+~ bd:6/2 ~ bd:6 bd:6 bd:6/2,
+~ wt_vgame:7 ~ wt_vgame:7/2 [ wt_vgame:7/2 wt_vgame:11/2 wt_vgame:7/2 ] ~ wt_vgame:7/2 ~,
+~ rolandtr606_bd ~ ~ rolandtr606_bd/2 rolandtr606_bd/2 rolandtr606_bd/2 rolandtr606_bd/2
+`).scope()

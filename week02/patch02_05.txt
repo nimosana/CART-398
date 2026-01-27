@@ -1,0 +1,42 @@
+setcps(96/60/4)
+
+$: sound("<click ~ click*2 ~>")
+  .gain(0.25)
+  .fast(2)
+  .hpf(2000)
+
+$: note("<0 0 ~ -1> ~ <0 ~ -2> ~")
+  .sound("subbass")
+  .gain(1)
+  .lpf("90 120")
+  .slow(2)
+
+$: note("<7 9 ~ 10> ~ <7 12> ~")
+  .sound("anvil")
+  .gain(2.4)
+  .room(0.2)
+  .pan("<0.3 0.7>")
+  .fast("<1 1 2 1>")
+
+$: note("<[14 15] [16 17] ~ 15>")
+  .sound("fm_sine")
+  .gain(0.12)
+  .slow(4)
+  .pan("<0.1 0.9>")
+  .lpf("800 2400")
+  .room(0.8)
+
+$: sound("~ rim ~ rim:2")
+  .gain(0.18)
+  .fast(2)
+
+$: sound("noise")
+  .gain("0 ~ 0.05 ~")
+  .lpf("<400 2000>")
+  .slow(6)
+
+$: note("~ ~ ~ -12")
+  .sound("subbass")
+  .gain(1.2)
+  .lpf(60)
+  .every(8,slow(2))
