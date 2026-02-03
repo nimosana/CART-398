@@ -1,0 +1,21 @@
+
+setcps(130/60/4)
+
+$: stack(
+note(`<
+[- [32 -]]*2
+[- [[32] -]]*2     
+     >`).sound("clap"),
+  
+s("yamahary30_bd*4"),
+  s(`<
+  ace_bd*2
+  ace_bd*2
+  ace_bd*2
+  ace_bd*4
+  >`)
+,
+  s(`<mpc1000_bd?0.4,
+  mpc1000_bd*2?0.6,
+  mpc1000_bd*4?0.8>`)
+
