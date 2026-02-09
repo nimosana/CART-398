@@ -1,0 +1,31 @@
+setcps(120/60/4)
+
+$: stack(
+
+  s(`[- ~ 1 ~]*2`)
+    .sound("clap:4")
+    .room(1)
+    .lpf("4000 5000")
+    .gain(0.5),
+  
+  s(`[- ~ [1?0.2 -] ~]*4`)
+    .sound("rolandsystem100_bd")
+    .room(1)
+    .lpf(5000)
+    .gain(0.5)
+  .every(2, x=> x.lpf(150))
+  ,
+
+  s(`<
+      [- 1 1 - 1 1 1 -]*2
+      [- 1 1 - 1 1 [1 1] 1]
+    >`)
+    .sound("rhythmace_bd")
+    .room(1)
+    .crush(5)
+    .lpf(4000)
+    .gain(1)
+    .every(2, x=> x.lpf(3000))
+  .every(2, x=> x.sound("rolandcompurhythm78_bd")
+  )
+)

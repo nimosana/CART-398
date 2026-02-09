@@ -1,0 +1,46 @@
+setcps(120/60/4)
+
+$: stack(
+
+  note(`<
+    [1 8 5 1/2 6 5]/1.5
+    [~ 6/2 5 8 1 ~ 5]
+  >`)
+    .sound("triangle")
+    .scale("G:minor")
+    .room(0.5),
+
+  note(`<
+    [35 ~ 35 38 ~ 35]
+    [36 ~ 36/2 36 ~ 35]*2
+  >`)
+    .sound("compurhythm1000_bd")
+    .lpf(1000)
+    .room(0.5),
+
+  note(`<
+    [~ ~ 35 ~ ~]
+    [-]
+  >`)
+    .sound("compurhythm1000_bd")
+    .gain(0)
+    .lpf(2000)
+    .every(2, x => x.gain(1))
+    .room(0.5),
+
+  s(`[- ~ 1 ~]*2`)
+    .sound("clap:4")
+    .room(1)
+    .lpf(5000)
+    .gain(0.5),
+
+  s(`<
+      [- 1 1 - 1 1 1 -]*2
+      [1 - 1 1 - 1 - 1]
+    >`)
+    .sound("alesishr16_hh")
+    .room(1)
+    .crush(5)
+    .lpf(4000)
+    .gain(1)
+)

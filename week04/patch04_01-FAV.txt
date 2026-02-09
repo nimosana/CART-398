@@ -1,0 +1,24 @@
+setcps(120/60/4)
+
+$: stack(
+
+note(`<
+[1 1 1 8 5]
+[[6] [6] [6] [6 -] 5]
+>`).sound("triangle").scale("G:minor").room(0.5),
+
+  note(`<
+[35 35 35 38 35]
+[[36] [36] [36] [36 -] 35]
+>`).sound("emumodular_bd")
+  .lpf(30).room(0.5),
+  
+    note(`<
+[35 35 35 35 35]
+[-]
+>`).sound("emumodular_bd")
+  .gain(0).every(2,x=> x.gain(1)).room(0.5),
+  
+  s(`[- 1]*2`).sound("clap:4").room(1).lpf(5000).gain(0.5 ),
+  s(`<- - [- 1]*5 [- 1]*5 >`).sound("alesishr16_hh").room(1).crush(5).lpf("4000").gain(1)
+) 

@@ -1,14 +1,29 @@
-
 setcps(130/60/4)
 
-samples({
-  cray: 'https://cdn.freesound.org/previews/822/822302_3905081-lq.mp3'
-})
-
 $: stack(
+s(`<
+[1 [1 1] 1]*2
+[1 1 1]*2
+[1 [1 1] 1]*2
+[1 1 1]*2
+>`).sound("compurhythm8000_bd").room(0.5),
 
-note("<22.5 22?0.4 23?0.4>").sound("cray").gain("0.8"))
+s(`<
+[1 - 1]
+[1 1 -]
+[1 [1 1] 1]
+[1 1 1]
+>`).sound("didgeridoo").crush("6").room(1).hpf("0 1000 0 1000"),
 
-$: s("<space:5 [space:5 space:5]> space:6 space:7 <space:7 [space:7 space:7]>").sound("space")
-$: note("<5/2 ~ ~ ~>").sound("marktrees")
-$: note("<0.1?0.4 0.1?0.4 ~> <~ ~ 0.1*2>").sound("insect")
+  s(`<
+  [- [1 -] 1 -]
+  [1 [1 -] 1 -]
+  [- [1 -] 1 -]
+  [1 [1 -] 1 -]
+  >`).sound("wind"),
+
+  note(`<
+  [3 3 3 - 7 5 7 7 7 - 7 3]
+  [7 7 7 - 3 5 3 3 3 - 3 7]
+  >`).sound("wind").scale("<c2:iwato c3:iwato g2:iwato>")
+)
