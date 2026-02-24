@@ -1,0 +1,66 @@
+
+setcps(140/60/4)
+let sec1 = stack(
+  n("[~ 2]!2").sound("bongo"),
+  n("doepferms404_oh(3,8)").room(0.5)
+  )
+
+let sec1a = stack(
+  n("[~ 2]!2").sound("bongo"),
+  n("- [2?0.5 2?0.5]").sound("bongo")
+  .scale("d:minor")
+  .mode("below:d2")
+  .legato(0.8)
+  .gain(0.25)
+  .room(0.5)
+  .delay(slider(8,1,8,1))
+  .delayfb(0.8).pan(sine)
+  .size(1),
+  n("doepferms404_oh(3,8)").room(0.5)
+)
+
+let sec1b = stack(
+  n("[~ 2]!2").sound("bongo"),
+  n("- [2 2?0.5]").sound("bongo")
+  .scale("d:minor")
+  .mode("below:d2")
+  .legato(0.8)
+  .gain(0.25)
+  .room(0.5)
+  .delay(1)
+  .delayfb(0.8).pan(sine)
+  .size(1),
+  n("doepferms404_oh(3,8)")
+)
+
+
+let sec2 = stack(
+  s("[1 -]!2").sound("bongo"),
+  )
+
+let sec2a = stack(
+  s("[2 -]!2").sound("bongo"),
+  s("- 2?0.5").sound("bongo")
+
+)
+
+$: arrange(
+  [0, sec1.room(1)],
+  [0, sec1a.room(1.5)],
+  [0, sec1b.room(saw.slow(4)).gain(saw.slow(4).range(0.5, 1))]
+)
+
+$: s("ocarina/2").room(1).gain(0.2)
+$: arrange(
+  [4, sec2  .scale("d:minor")
+ ],
+  [4, sec2a  
+   .scale("d:minor")
+  .mode("below:d2")
+  .legato(0.9)
+  // .gain(0.25)
+  .room(slider(2,1,8,1))
+  .delay(1)
+  .delayfb(0.8).pan(sine)
+  .size(1)]
+)
