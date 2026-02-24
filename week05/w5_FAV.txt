@@ -1,8 +1,11 @@
-
+let drumsound = "gm_woodblock";
+let thumpsound = "mpc1000_bd"
+let boomsound = "moogconcertmatemg1_bd"
 
 setcps(140/60/4)
+
 let sec1gen = stack(
-  n("[~ 20|10 <5 5 10> 40*2?0.7]!2, [- 5]?0.7").sound("wt_digital_curses")
+  n("[~ 20|10 <5 5 10> 40*2?0.7]!2, [- 5]?0.7").sound("gm_oboe")
   .room(slider(3,0,8,1))
   .delay(slider(0.9,0,1,.1))
   .delayfb(slider(0.9,0,1,.1)).pan(sine)
@@ -10,15 +13,15 @@ let sec1gen = stack(
   .pan(saw.slow(2).range(0.5, 1))
   .gain(saw.slow(4).range(0.5, 1)),
   s("ocarina/2").room(1).gain(0.2),
-  n("[<<1 1 [10]*2> <5 5 20*2>> -]*2").sound("korgpoly800_bd:0").room(slider(1,0,3,.1)).lpf(1500),
+  n("[<<1 1 [1]*2> <5 5 5*2>> -]*2").sound(thumpsound).room(slider(3,0,3,.1)).lpf(1500),
   )
 
 let sec1a = stack(
-    n("20(3,8)").sound("moogconcertmatemg1_bd").room("0.1")
+    n("20(3,8)").sound(drumsound).room("0.1")
   )
 let sec1b = stack(
-  n("[<<1 1 [5]*2> 5> -]*2").sound("korgpoly800_bd").room(slider(1.7,0,3,.1)).lpf(1500),
-  n("<20(3,8) 20(5,8)>").sound("moogconcertmatemg1_bd").room("0.2 0.5")
+  n("[<<1 1 [5]*2> 5> -]*2").sound(thumpsound).room(slider(3,0,3,.1)).lpf(1500),
+  n("<20(3,8) 20(5,8)>").sound(boomsound).room("0.2 0.5").lpf(1500)
   .delay(slider(0.5,0,1,.1))
   .size(slider(0,0,1,.1))
   .gain(saw.slow(4).range(0.5, 1)),
@@ -26,23 +29,21 @@ let sec1b = stack(
 )
 
 let sec1c = stack(
-  n("[<<[5]*4> 5*4> -]*2").sound("korgpoly800_bd").room(slider(1.7,0,3,.1)).lpf(1500),
-  n("<20(7,8)>").sound("moogconcertmatemg1_bd").room("0.5")
-  .delay(slider(0.5,0,1,.1))
-  .size(slider(0,0,1,.1))
+  n("[<<[5]*4> 5*4> -]*2").sound(thumpsound).room(slider(3,0,3,.1)).lpf(1500),
+  n("<20(7,8)>").sound(boomsound).room("0.5")
+  .delay(slider(0.3,0,1,.1))
+  .size(slider(1,0,1,.1))
   .gain(saw.slow(4).range(0.5, 1)),
 )
 
 
-let sec2 = stack(
+let flutes1 = stack(
  s("- 2?0.5*2").sound("gm_pan_flute")
   )
 
-let sec2a = stack(
+let flutes2 = stack(
   s("[2 -]!2").sound("gm_pan_flute"),
-   s("1/2").sound("gm_pan_flute"),
-  
-
+   s("1/2").sound("gm_pan_flute")
 )
 
 $: arrange(
@@ -58,6 +59,6 @@ $: arrange(
 )
 
 $: arrange(
-  [4, sec2],
-  [2, sec2a],
+  [4, flutes1.gain(0.5)],
+  [2, flutes2.gain(0.5)],
 )
