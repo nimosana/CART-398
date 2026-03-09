@@ -1,0 +1,61 @@
+// evolving kaleidoscope feedback
+src(o0)
+  .scale(1.01)
+  .rotate(() => Math.sin(time*0.1)*0.4)
+  .kaleid(() => 7 + Math.floor(Math.sin(time)*1))
+  .modulateRotate(
+      osc(
+        () => 8 + Math.sin(time*0.4)*5,
+        0.1,
+        () => Math.sin(time*0.3)
+      ).kaleid(9),
+      0.5
+  )
+  .modulateScale(
+      noise(() => 3 + Math.sin(time*0.3)*2),
+      () => 0.25 + Math.sin(time*0.25)*0.2
+  )
+  .out(o0)
+
+
+// radial oscillator mandala
+osc(
+    () => 30 + Math.sin(time*0.6)*20,
+    0.15,
+    () => Math.sin(time*0.3)
+)
+  .kaleid(() => 10 + Math.floor(Math.sin(time)))
+  .modulateKaleid(
+      shape(
+        () => 4 + Math.floor(Math.sin(time)*200),
+        0.35,
+        0.01
+      ).rotate(() => time*0.15),
+      0.6
+  )
+  .rotate(() => time*0.08)
+  .repeat(
+      () => 2 + Math.floor(Math.sin(time*0.3)*3),
+      () => 2 + Math.floor(Math.cos(time*0.25)*3)
+  )
+  .color(
+      () => 0.6 + Math.sin(time*0.3)*0.4,
+      () => 0.5 + Math.sin(time*0.2)*0.5,
+      () => 1 + Math.sin(time*0.4)*0.5
+  )
+  .colorama(() => 0.5 + Math.sin(time*0.3)*0.5)
+  .out(o1)
+
+
+// final kaleidoscopic composite
+src(o0)
+  .blend(o1, () => 0.4 + Math.sin(time*0.5)*0.2)
+  .kaleid(() => 6 + Math.floor(Math.sin(time)*0.01))
+  .modulate(
+      noise(2,0.1).rotate(() => time*0.1),
+      0.2
+  )
+  .contrast(1.4)
+  .brightness(-0.05)
+  .colorama(() => 0.7 + Math.sin(time*0.2)*0.6)
+  .out()

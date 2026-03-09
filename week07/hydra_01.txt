@@ -1,0 +1,71 @@
+
+// base texture
+src(o0)
+  .scale(1.01)
+  .rotate(() => Math.sin(time*0.1)*0.2)
+  .modulate(
+      osc(
+        () => 8 + Math.sin(time*0.4)*4,
+        0.1,
+        () => Math.sin(time*0.2)
+      ).kaleid(() => 4 + Math.floor(Math.sin(time*0.3)*4)),
+      0.25
+  )
+  .modulateScale(
+      noise(() => 3 + Math.sin(time*0.3)*2,0.2),
+      () => 0.3 + Math.sin(time*0.2)*0.2
+  )
+  .modulateScrollY(
+      osc(2,0.1)
+        .rotate(() => time*0.05)
+        .modulate(noise(4),0.2),
+      0.4
+  )
+  .color(
+      () => 0.7 + Math.sin(time*0.2)*0.3,
+      () => 0.8 + Math.sin(time*0.3)*0.2,
+      () => 1.1 + Math.sin(time*0.4)*0.3
+  )
+  .out(o0)
+
+
+// second evolving layer
+osc(
+    () => 20 + Math.sin(time*0.7)*10,
+    0.15,
+    () => Math.sin(time*0.3)
+)
+  .kaleid(() => 6 + Math.floor(Math.sin(time*0.5)*4))
+  .modulateRotate(
+      noise(3).rotate(() => time*0.1),
+      0.4
+  )
+  .modulate(
+      shape(
+        () => 3 + Math.floor(Math.sin(time*0.4)*5),
+        0.3,
+        0.01
+      ).rotate(() => time*0.15),
+      0.3
+  )
+  .repeat(
+      () => 2 + Math.floor(Math.sin(time*0.2)*3),
+      () => 2 + Math.floor(Math.sin(time*0.25)*3)
+  )
+  .colorama(() => 0.5 + Math.sin(time*0.3)*0.5)
+  .out(o1)
+
+
+// final composite
+src(o0)
+  .blend(o1, () => 0.3 + Math.sin(time*0.5)*0.2)
+  .contrast(1.2)
+  .brightness(() => Math.sin(time*0.1)*0.1)
+  .modulate(
+      noise(2,0.1).pixelate(
+        () => 20 + Math.sin(time)*10,
+        () => 20 + Math.cos(time)*10
+      ),
+      0.1
+  )
+  .out()
